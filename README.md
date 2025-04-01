@@ -12,7 +12,7 @@ Project Details :
     * Real-time prediction via voice recorder
 
 2. Make up recommendation based on skin color
-     * Dataset of skin shades and make up brands
+     * Dataset of skin shades; dark, light, mid-dark, mid-light and make up brands
      * Image feature extraction with CV2  
      * Classification with CNN
   
