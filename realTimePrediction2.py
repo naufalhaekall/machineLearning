@@ -15,9 +15,9 @@ N_FFT = 2048
 HOP_LENGTH = 512           
 CLASS_NAMES = ['Maju', 'Mundur', 'Kanan', 'Kiri', 'Berhenti'] 
 
-TRAIN_MEAN_PATH = '/Users/naufalhaekall/Documents/UNIVERSITY/Academic Documents/Skripsi/Code/models/MFCC/train_mean.npy'       
-TRAIN_STD_PATH = '/Users/naufalhaekall/Documents/UNIVERSITY/Academic Documents/Skripsi/Code/models/MFCC/train_std.npy'         
-MODEL_PATH = '/Users/naufalhaekall/Documents/UNIVERSITY/Academic Documents/Skripsi/Code/models/MFCC/lstmModel_earlyStop.h5'    
+TRAIN_MEAN_PATH = '/Users/train_mean.npy'       
+TRAIN_STD_PATH = '/Users/train_std.npy'         
+MODEL_PATH = '/Users/lstmModel_earlyStop.h5'    
 RECORDINGS_DIR = './recordings/'  
 
 # Ensure recordings directory exists
