@@ -63,8 +63,8 @@ def process_folder(folder_path, output_folder, noise_start_sec, noise_end_sec):
             apply_noise_reduction(audio_path, noise_data, output_path)
 
 # Example usage
-folder_path = '/content/drive/MyDrive/Academic/Final Thesis/Navigation/Clear Audio/Berhenti'
-output_folder = '/content/drive/MyDrive/Academic/Final Thesis/Navigation/Clear Audio/Berhenti/Reduction'
+folder_path = '/content/Berhenti'
+output_folder = '/content/Reduction'
 process_folder(folder_path, output_folder, 0, 5)  # Noise profile in first 5 second
 
 """### Visualization"""
@@ -107,8 +107,8 @@ def visualize_audio_comparison(clean_audio_path, noisy_audio_path, target_sr=160
     plt.tight_layout()
     plt.show()
 
-noise_audio_path = '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Test Maju 3.wav'
-reduction_audio_path = '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Maju 3.wav'
+noise_audio_path = '/content/Test Maju 3.wav'
+reduction_audio_path = '/content/Processed Test Maju 3.wav'
 
 visualize_audio_comparison(noise_audio_path, reduction_audio_path)
 
@@ -160,8 +160,8 @@ import librosa
 import numpy as np
 
 def main():
-    audio_file_1 = "/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Test Maju 3.wav"
-    audio_file_2 = "/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Maju 3.wav"
+    audio_file_1 = "/content/Test Maju 3.wav"
+    audio_file_2 = "/content/Processed Test Maju 3.wav"
 
     audio_data_1, sample_rate_1 = librosa.load(audio_file_1, sr=None)
     audio_data_2, sample_rate_2 = librosa.load(audio_file_2, sr=None)
@@ -187,7 +187,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 # Navigation Dataset and Class Name
-data_dir = '/content/drive/MyDrive/Thesis/Navigation/With Noise Reduction'
+data_dir = '/content/With Noise Reduction'
 class_names = ['Maju', 'Mundur', 'Kanan', 'Kiri', 'Berhenti']
 
 file_paths = []
@@ -495,8 +495,8 @@ X_train_features = extract_features(X_train, num_gfcc=13, maxlen=400)  # Shape: 
 mean = np.mean(X_train_features, axis=(0, 1))
 std = np.std(X_train_features, axis=(0, 1))
 
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/train_mean.npy', mean)
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/train_std.npy', std)
+np.save('/content/train_mean.npy', mean)
+np.save('/content/train_std.npy', std)
 
 # Normalize training features
 X_train_features_norm = (X_train_features - mean) / std
@@ -512,26 +512,26 @@ X_test_features = extract_features(X_test, num_mfcc=13, maxlen=400)
 X_test_features_norm = (X_test_features - mean) / std
 
 # Save training data
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Ver 2.0/Train/X_train_features_norm.npy', X_train_features_norm)
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Ver 2.0/Train/y_train.npy', y_train)
+np.save('/content/X_train_features_norm.npy', X_train_features_norm)
+np.save('/content/y_train.npy', y_train)
 
 # Save validation data
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Ver 2.0/Val/X_val_features_norm.npy', X_val_features_norm)
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Ver 2.0/Val/y_val.npy', y_val)
+np.save('/content/X_val_features_norm.npy', X_val_features_norm)
+np.save('/content/y_val.npy', y_val)
 
 # Save test data
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/Ver 2.0/Test/X_test_features_norm.npy', X_test_features_norm)
-np.save('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/Ver 2.0/Test/y_test.npy', y_test)
+np.save('/content/X_test_features_norm.npy', X_test_features_norm)
+np.save('/content/y_test.npy', y_test)
 
 print("Features and labels saved successfully.")
 
 """## Visualization"""
 
-data = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/X_train_features_norm.npy')
+data = np.load('/content/X_train_features_norm.npy')
 print(data.shape)
 
 # Load the .npy file
-data = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/X_train_features_norm.npy')
+data = np.load('/content/X_train_features_norm.npy')
 
 sample_index = 100
 data_sample = data[sample_index]  # Extract shape (400, 39)
@@ -554,16 +554,16 @@ K.clear_session()
 import numpy as np
 
 # Load training data
-X_train_features_norm = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/X_train_features_norm.npy')
-y_train = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/y_train.npy')
+X_train_features_norm = np.load('/content/X_train_features_norm.npy')
+y_train = np.load('/content/y_train.npy')
 
 # Load validation data
-X_val_features_norm = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Val/X_val_features_norm.npy')
-y_val = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Val/y_val.npy')
+X_val_features_norm = np.load('/content/X_val_features_norm.npy')
+y_val = np.load('/content/y_val.npy')
 
 # Load test data
-X_test_features_norm = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Test/X_test_features_norm.npy')
-y_test = np.load('/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Test/y_test.npy')
+X_test_features_norm = np.load('/content/X_test_features_norm.npy')
+y_test = np.load('/content/y_test.npy')
 
 print("Features and labels loaded successfully.")
 
@@ -735,17 +735,17 @@ plt.show()
 """## CNN Model"""
 
 import joblib
-model.save('/content/drive/MyDrive/Thesis/Final Thesis/Classification/Finale/With Noise Reduction/CNN/LPCC/cnnModel_earlyStop.h5')
+model.save('/content/cnnModel_earlyStop.h5')
 
 """## RNN Model"""
 
 import joblib
-model.save('/content/drive/MyDrive/Thesis/Final Thesis/Classification/Finale/With Noise Reduction/Ver 2.0/RNN/MFCC/rnnModel_earlyStop.h5')
+model.save('/content/rnnModel_earlyStop.h5')
 
 """## LSTM Model"""
 
 import joblib
-model.save('/content/drive/MyDrive/Thesis/Classification/With Noise Reduction/Ver 2.0/LSTM/MFCC/lstmModel_earlyStop.h5')
+model.save('/content/lstmModel_earlyStop.h5')
 
 """# Model Evaluation"""
 
@@ -755,7 +755,7 @@ import seaborn as sns
 import numpy as np
 
 from tensorflow.keras.models import load_model
-model = load_model('/content/drive/MyDrive/Thesis/Classification/With Noise Reduction/Ver 2.0/LSTM/MFCC/lstmModel_earlyStop.h5')
+model = load_model('/content/lstmModel_earlyStop.h5')
 
 """## Classify Test Dataset"""
 
@@ -848,9 +848,9 @@ N_FFT = 2048
 HOP_LENGTH = 512
 CLASS_NAMES = ['Maju', 'Mundur', 'Kanan', 'Kiri', 'Berhenti']
 
-TRAIN_MEAN_PATH = '/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/train_mean.npy'
-TRAIN_STD_PATH = '/content/drive/MyDrive/Thesis/Feature Extraction/With Noise Reduction/MFCC/Train/train_std.npy'
-MODEL_PATH = '/content/drive/MyDrive/Thesis/Classification/With Noise Reduction/Ver 2.0/LSTM/MFCC/lstmModel_earlyStop.h5'
+TRAIN_MEAN_PATH = '/content/train_mean.npy'
+TRAIN_STD_PATH = '/content/train_std.npy'
+MODEL_PATH = '/content/lstmModel_earlyStop.h5'
 
 # Load classification model
 model = load_model(MODEL_PATH)
@@ -868,14 +868,14 @@ import numpy as np
 
 # Load New Test Data and Labels
 new_audio_files = [
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Maju 1.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Maju 2.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Maju 3.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Maju 4.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Kanan 1.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Kiri 1.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Mundur 1.wav',
-    '/content/drive/MyDrive/Thesis/Final Thesis/Navigation/Test Audio/Reduction/Processed Test Berhenti 1.wav',
+    '/content/Processed Test Maju 1.wav',
+    '/content/Processed Test Maju 2.wav',
+    '/content/Processed Test Maju 3.wav',
+    '/content/Processed Test Maju 4.wav',
+    '/content/Processed Test Kanan 1.wav',
+    '/content/Processed Test Kiri 1.wav',
+    '/content/Processed Test Mundur 1.wav',
+    '/content/Processed Test Berhenti 1.wav',
 ]
 
 new_labels = [
